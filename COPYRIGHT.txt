@@ -1,0 +1,2 @@
+Copyright (C) 2013 by Clearcode <http://clearcode.cc>
+and associates (see AUTHORS).

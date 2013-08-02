@@ -1,0 +1,4 @@
+include *.rst *.py
+recursive-include pytest_sauce *.py *.yaml
+recursive-include docs *
+prune docs/build
