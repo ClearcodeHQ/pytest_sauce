@@ -1,13 +1,18 @@
 pytest_sauce
 ==================
 
-.. image:: https://travis-ci.org/fizyk/pytest_sauce.png?branch=master
-    :target: https://travis-ci.org/fizyk/pytest_sauce
-    :alt: Tests for RandomWords
+pytest_sauce is a pytest wrapper, that makes it easier to configure and run selenium tests both locally and on saucelabs with pytest.
 
-.. image:: https://coveralls.io/repos/fizyk/pytest_sauce/badge.png?branch=master
-    :target: https://coveralls.io/r/fizyk/pytest_sauce?branch=master
-    :alt: Coverage Status
+It contains methods to:
+
+- download and run saucelabs connector
+- download chromedriver
+- run tests on multiple browsers
+- if chrome found withinb browser set to have tests run, checks and downloads chromedriver.
+
+So far, this package provides only methods, that you have to use within your own tasks to run tests. But in the future, it'll provide at least one method to run tests depend on configuration file.
+
+All these tasks requires is argument with yaml config location
 
 .. image:: https://pypip.in/v/pytest_sauce/badge.png
     :target: https://crate.io/packages/pytest_sauce/
@@ -16,11 +21,3 @@ pytest_sauce
 .. image:: https://pypip.in/d/pytest_sauce/badge.png
     :target: https://crate.io/packages/pytest_sauce/
     :alt: Number of PyPI downloads
-
-python package template - to make easier for me to duplicate general package structure.
-
-
-Travis-ci
----------
-
-After creating package on github, move to tracis-ci.org, and turn on ci builds for given package.
