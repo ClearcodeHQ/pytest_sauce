@@ -19,14 +19,13 @@
 import os
 import urllib2
 import platform
-
 from subprocess import Popen
 from StringIO import StringIO
 from zipfile import ZipFile
 
-from paver.easy import sh
 
 from pytest_sauce import get_config, logger
+
 try:
     import pytestipdb
     USE_IPDB = True
