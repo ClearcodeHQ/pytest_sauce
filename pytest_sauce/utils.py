@@ -40,15 +40,17 @@ def run_tests(config_path):
         :param str config_path: path to yaml config file
     '''
     config = get_config(config_path)
+
     if config.type == 'saucelabs':
         logger.info('testing on saucelabs')
         credentials_yaml = config.saucelabs.get('yaml', config_path)
-        test_saucelabs(config, credentials_yaml)
-    elif config.type == 'selenium':
+        return test_saucelabs(config, credentials_yaml)
+
+    if config.type == 'selenium':
         logger.info('testing on selenium')
-        test_selenium(config)
-    else:
-        test_unit(config)
+        return test_selenium(config)
+
+    return test_unit(config)
 
 
 def run(command, config):
@@ -64,15 +66,17 @@ def run(command, config):
         pytest_proc.communicate()
     except KeyboardInterrupt:
         pytest_proc.kill()
-    if pytest_proc.returncode != 0:
-        return pytest_proc.returncode
-    return 0
+    return pytest_proc.returncode
 
 
 def test_selenium(config):
     '''
         runs selenium test based on config
     '''
+    if not config['browsers']:
+        logger.info('No browsers defined!')
+        return
+
     for browser in config['browsers']:
         logger.info('testing %s browser' % browser['browsername'])
         call_arguments = ['py.test'] +\
@@ -86,24 +90,32 @@ def test_selenium(config):
             xfvb_args = map_presets_to_cmd(config.selenium.xvfb.options)
             xfvb_args.insert(0, 'xvfb-run')
             call_arguments = xfvb_args + call_arguments
-        run(call_arguments, config)
-    if not config['browsers']:
-        logger.info('No browsers defined!')
+        code = run(call_arguments, config)
+        if code != 0:
+            break
+
+    return code
 
 
 def test_saucelabs(config, credentials_yaml):
     '''
         runs selenium test based on config
     '''
+    if not config['browsers']:
+        logger.warning('No browsers defined!')
+        return
+
     for browser in config['browsers']:
         logger.info('testing %s browser' % browser['browsername'])
         call_arguments = ['py.test',
                           '--saucelabs=%s'
                           % (os.path.abspath(credentials_yaml))
                           ] + map_presets_to_cmd(browser)
-        run(call_arguments, config)
-    if not config['browsers']:
-        logger.warning('No browsers defined!')
+        code = run(call_arguments, config)
+        if code != 0:
+            break
+
+    return code
 
 
 def test_unit(config):
@@ -112,7 +124,7 @@ def test_unit(config):
     '''
     logger.info('Running pytest tests without selenium')
     call_arguments = ['py.test', '-p no:pytest_mozwebqa']
-    run(call_arguments, config)
+    return run(call_arguments, config)
 
 
 def map_presets_to_cmd(args):
@@ -121,7 +133,7 @@ def map_presets_to_cmd(args):
         prefix = '--'
         if len(argname) == 1:
             prefix = '-'
-        if(isinstance(argval, bool) and argval):
+        if (isinstance(argval, bool) and argval):
             ret_args.append('%s%s' % (prefix, argname))
         elif len(argname) == 1:
             ret_args.append('-%s' % (argname))
