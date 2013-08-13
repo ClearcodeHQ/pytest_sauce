@@ -20,6 +20,7 @@ selenium:
         # However if xvfb_on is set to false, will not run in xvfb mode at all
         options:
             server-args: -screen 0 1024x768x24
+            auto-servernum: true
     chromedriver:
         file: ./chromedriver # chromedriver location
         url: http://chromedriver.googlecode.com/files/  # chromedriver repository
