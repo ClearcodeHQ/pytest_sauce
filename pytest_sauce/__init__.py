@@ -24,7 +24,7 @@ import logging
 
 from pymlconf import ConfigManager
 
-__version__ = '0.2.4'
+__version__ = '0.2.6'
 
 
 logger = logging.getLogger(__name__)
