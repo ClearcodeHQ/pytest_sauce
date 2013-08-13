@@ -25,10 +25,10 @@ selenium:
         file: ./chromedriver # chromedriver location
         url: http://chromedriver.googlecode.com/files/  # chromedriver repository
         zips: # filenames
-            win: chromedriver_win32_2.1.zip
-            mac: chromedriver_mac32_2.1.zip
-            linux32: chromedriver_linux32_2.1.zip
-            linux64: chromedriver_linux64_2.1.zip
+            win: chromedriver_win32_2.2.zip
+            mac: chromedriver_mac32_2.2.zip
+            linux32: chromedriver_linux32_2.2.zip
+            linux64: chromedriver_linux64_2.2.zip
 
 saucelabs:
     connect: # saucelabs connect and download url
