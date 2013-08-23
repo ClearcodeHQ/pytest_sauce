@@ -41,9 +41,9 @@ setup(
         read('CHANGES.rst')
     ),
     keywords='pytest mozwebqa selenium saucelabs',
-    author='The A Team',
+    author='Clearcode - The A Room',
     author_email='thearoom@clearcode.cc',
-    url='https://example.com',
+    url='https://github.com/clearcode/pytest_sauce',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
