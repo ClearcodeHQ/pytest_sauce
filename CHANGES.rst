@@ -2,6 +2,23 @@
 CHANGES
 =======
 
+current
+-------
+- various package description improvements
+
+0.2.6
+-----
+- default chromedriver version bumped to 2.2
+- xvfb-run mode now starts with auto-servernum parameter by default
+
+0.2.5
+-----
+- run_tests returns error code from latests test
+
+0.2.4
+-----
+- punblic release
+
 0.2.3
 -----
 
