@@ -17,7 +17,7 @@ current
 
 0.2.4
 -----
-- punblic release
+- public release
 
 0.2.3
 -----
