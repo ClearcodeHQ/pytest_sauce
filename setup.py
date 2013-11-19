@@ -33,7 +33,7 @@ def read(fname):
 requirements = [
     'pytest',
     'pytest_mozwebqa',
-    'pymlconf >=0.2.11a'
+    'pymlconf <0.3.1,>0.3.1',  # this is due to error on this Pymlconf version
 ]
 
 test_requires = []
