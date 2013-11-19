@@ -5,6 +5,7 @@ CHANGES
 current
 -------
 - various package description improvements
+- excludes buggy pymlconf requirement
 
 0.2.6
 -----
