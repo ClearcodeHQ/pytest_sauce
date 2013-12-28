@@ -22,6 +22,7 @@ import platform
 from subprocess import Popen
 from StringIO import StringIO
 from zipfile import ZipFile
+import shutil
 
 
 from pytest_sauce import get_config, logger
@@ -178,7 +179,7 @@ def download_and_unzip(url, filename, path):
     if len(path_parts) > 1 and not os.path.exists(path_parts[0]):
         os.makedirs(path_parts[0])
 
-    os.rename(tmp_file, path)
+    shutil.move(tmp_file, path)
     os.chmod(path, 0744)
 
 
