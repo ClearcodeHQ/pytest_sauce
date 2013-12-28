@@ -18,13 +18,12 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with pytest_sauce. If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 import os
 import logging
 
 from pymlconf import ConfigManager
 
-__version__ = '0.2.8'
+__version__ = '0.2.10'
 
 
 logger = logging.getLogger(__name__)
