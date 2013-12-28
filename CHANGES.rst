@@ -4,6 +4,10 @@ CHANGES
 
 current
 -------
+- changed os.rename to shutil.move. Fixes moving files between partitions. [fizyk]
+
+0.2.8
+-----
 - various package description improvements
 - excludes buggy pymlconf requirement
 
