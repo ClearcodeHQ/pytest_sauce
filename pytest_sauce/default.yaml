@@ -23,12 +23,12 @@ selenium:
             auto-servernum: true
     chromedriver:
         file: ./chromedriver # chromedriver location
-        url: http://chromedriver.googlecode.com/files/  # chromedriver repository
+        url: http://chromedriver.storage.googleapis.com/2.8/  # chromedriver repository
         zips: # filenames
-            win: chromedriver_win32_2.2.zip
-            mac: chromedriver_mac32_2.2.zip
-            linux32: chromedriver_linux32_2.2.zip
-            linux64: chromedriver_linux64_2.2.zip
+            win: chromedriver_win32.zip
+            mac: chromedriver_mac32.zip
+            linux32: chromedriver_linux32.zip
+            linux64: chromedriver_linux64.zip
 
 saucelabs:
     connect: # saucelabs connect and download url
