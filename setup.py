@@ -22,6 +22,7 @@ import os
 import re
 from setuptools import setup, find_packages
 
+
 here = os.path.dirname(__file__)
 with open(os.path.join(here, 'pytest_sauce', '__init__.py')) as v_file:
     package_version = re.compile(r".*__version__ = '(.*?)'", re.S).match(v_file.read()).group(1)
@@ -74,6 +75,11 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Testing',
     ],
+    entry_points = {
+        "distutils.commands": [
+            "pytest_sauce = pytest_sauce.command:PytestSauce",
+        ],
+    },
     packages=find_packages(),
     install_requires=requirements,
     tests_require=test_requires,
