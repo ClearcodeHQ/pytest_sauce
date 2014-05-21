@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright (C) 2013 by Clearcode <http://clearcode.cc>
 # and associates (see AUTHORS).
 #
@@ -62,7 +60,7 @@ setup(
     keywords='pytest mozwebqa selenium saucelabs',
     author='Clearcode - The A Room',
     author_email='thearoom@clearcode.cc',
-    url='https://github.com/clearcode/pytest_sauce',
+    url='https://github.com/ClearcodeHQ/pytest_sauce',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
