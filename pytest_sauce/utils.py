@@ -17,13 +17,15 @@
 # along with pytest_sauce. If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import tarfile
 import urllib2
 import platform
+
 from subprocess import Popen
 from StringIO import StringIO
 from zipfile import ZipFile
-import shutil
 
+import shutil
 
 from pytest_sauce import get_config, logger
 
@@ -160,6 +162,23 @@ def read_run_arguments(config):
     return command_arguments
 
 
+def download_and_extract(url, path):
+    '''
+    Downloads data from url and extracts tar.gz file
+
+    Args:
+        url - url from wchich file will be downloaded
+        path - path to file in which data of file from archive will be written
+    Returns:
+        None, result should be extracted file on disk
+    '''
+    response = urllib2.urlopen(url)
+    archive_data = StringIO(response.read())
+
+    with tarfile.open(path, fileobj=archive_data) as out_file:
+        out_file.extractall()
+
+
 def download_and_unzip(url, filename, path):
     '''
     Downloads data from url and unpacks zip file
@@ -192,7 +211,7 @@ def download_and_unzip(url, filename, path):
 
 def get_saucelabs_connect(config=None, config_path=None, update=False):
     '''
-    Downloads saucelabs connect binary into **config.saucelabs.connect.file**
+    Downloads saucelabs connect binary into **config.saucelabs.connect.path**
 
     :param pymlconf.ConfigManager config: configuration object
     :param str config_path: path to config
@@ -207,29 +226,30 @@ def get_saucelabs_connect(config=None, config_path=None, update=False):
 
     sauce_config = config.saucelabs
 
-    if not update and os.path.isfile(sauce_config.connect.file):
-        logger.debug('%s already exists' % sauce_config.connect.file)
+    if not update and os.path.isdir(sauce_config.connect.path):
+        logger.debug('%s already exists' % sauce_config.connect.path)
     else:
         logger.info('Downloading %s' % sauce_config.connect.url)
-        download_and_unzip(sauce_config.connect.url,
-                           'Sauce-Connect.jar',
-                           sauce_config.connect.file)
+        download_and_extract(
+            url=sauce_config.connect.url,
+            path=sauce_config.connect.path
+        )
         logger.info('Downloaded')
 
-    return os.path.abspath(sauce_config.connect.file)
+    return os.path.abspath(sauce_config.connect.path)
 
 
 def run_saucelabs(config_path):
     '''
-        Runs saucelabs
+        Runs saucelabs (by setting up tunnel via saucelabs connect)
     '''
     config = get_config(config_path)
-    sauce = get_saucelabs_connect(config)
-    command = ['java',
-               '-jar',
-               sauce,
-               config.get('username'),
-               config.get('api-key')]
+    sauce_connect_path = get_saucelabs_connect(config) + '/bin/sc'
+
+    command = [sauce_connect_path, '--verbose',
+               '-u', config.get('username'),
+               '-k', config.get('api-key')]
+
     pytest_proc = Popen(' '.join(command), shell=True)
     try:
         pytest_proc.communicate()

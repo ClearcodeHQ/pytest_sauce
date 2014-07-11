@@ -31,5 +31,5 @@ selenium:
 
 saucelabs:
     connect: # saucelabs connect and download url
-        file: ./Saucelabs-Connect-latest.jar
-        url: https://saucelabs.com/downloads/Sauce-Connect-latest.zip
+        path: ./sc-4.3-linux
+        url: https://saucelabs.com/downloads/sc-4.3-linux.tar.gz

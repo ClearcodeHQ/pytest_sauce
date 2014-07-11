@@ -4,6 +4,10 @@ CHANGES
 
 current
 -------
+- upgrade Saucelab Connect to v4.3. It's not backward compatible with previous versions.
+
+0.2.10
+-------
 - changed os.rename to shutil.move. Fixes moving files between partitions. [fizyk]
 
 0.2.8
