@@ -4,6 +4,10 @@ CHANGES
 
 current
 -------
+- bugfix: xvfb_on warning wasn't working properly.
+
+0.3
+-------
 - upgrade Saucelab Connect to v4.3. It's not backward compatible with previous versions.
 
 0.2.10
