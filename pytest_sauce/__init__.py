@@ -23,7 +23,7 @@ import logging
 
 from pymlconf import ConfigManager
 
-__version__ = '0.3'
+__version__ = '0.3.1'
 
 
 logger = logging.getLogger(__name__)

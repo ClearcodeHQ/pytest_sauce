@@ -20,6 +20,7 @@ import os
 import tarfile
 import urllib2
 import platform
+import warnings
 
 from subprocess import Popen
 from StringIO import StringIO
