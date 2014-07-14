@@ -4,7 +4,7 @@ CHANGES
 
 current
 -------
-- xvfb_on option removed completely. Please use `xvfb: true` or `xvfb: false`.
+- xvfb_on option removed completely. Please use `xvfb: false` to disable virtual framebuffer.
 
 0.3
 -------
