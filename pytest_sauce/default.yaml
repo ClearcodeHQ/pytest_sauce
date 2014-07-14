@@ -15,8 +15,7 @@ type: selenium
 testpath: ./    # basepath to run tests in
 selenium:
     xvfb:
-        # xvfb settings for xvfb mode (consult man xfvb-run here)
-        # However if xvfb_on is set to false, will not run in xvfb mode at all
+        # xvfb settings for xvfb mode (consult man xvfb-run here)
         options:
             server-args: -screen 0 1024x768x24
             auto-servernum: true

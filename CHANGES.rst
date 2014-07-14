@@ -4,7 +4,7 @@ CHANGES
 
 current
 -------
-- bugfix: xvfb_on warning wasn't working properly.
+- xvfb_on option removed completely. Please use `xvfb: true` or `xvfb: false`.
 
 0.3
 -------
