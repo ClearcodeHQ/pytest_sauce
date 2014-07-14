@@ -66,13 +66,3 @@ To run test in normal mode, simply set this key to false in your config:
 
     selenium:
         xvfb: false
-
-.. warning::
-
-    Previous construct is deprecated!
-
-    .. code-block:: yaml
-
-        selenium:
-            xvfb:
-                xvfb_on: false

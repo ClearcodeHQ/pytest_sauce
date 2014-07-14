@@ -20,7 +20,6 @@ import os
 import tarfile
 import urllib2
 import platform
-import warnings
 
 from subprocess import Popen
 from StringIO import StringIO
@@ -90,14 +89,7 @@ def test_selenium(config):
             call_arguments += map_presets_to_cmd({
                 'chromepath': get_chromedriver(config)
             })
-        if config.selenium.xvfb and config.selenium.xvfb.xvfb_on:
-            if config.selenium.xvfb.xvfb_on:
-                # deprecate xvfb_on
-                warnings.warn(
-                    '`xvfb_on` option has been deprecated. Please assign just False to xvfb',
-                    DeprecationWarning,
-                    2
-                )
+        if config.selenium.xvfb:
             xfvb_args = map_presets_to_cmd(config.selenium.xvfb.options)
             xfvb_args.insert(0, 'xvfb-run')
             call_arguments = xfvb_args + call_arguments
