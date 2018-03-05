@@ -18,10 +18,10 @@ All these tasks requires is argument with yaml config location
 
 
 
-.. image:: https://pypip.in/v/pytest_sauce/badge.png
+.. image:: https://img.shields.io/pypi/v/pytest_sauce.svg
     :target: https://crate.io/packages/pytest_sauce/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/pytest_sauce/badge.png
+.. image:: https://img.shields.io/pypi/dm/pytest_sauce.svg
     :target: https://crate.io/packages/pytest_sauce/
     :alt: Number of PyPI downloads
